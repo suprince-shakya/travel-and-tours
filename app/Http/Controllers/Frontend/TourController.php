@@ -132,11 +132,9 @@ class TourController extends Controller
                   ->orWhere('country_id', $tour->country_id);
             })
             ->latest()
-            ->take(4)
+            ->take(8)
             ->get();
 
-        $faqs = \App\Models\Faq::where('status', true)->latest()->get();
-
-        return view('frontend.tours.show', compact('tour', 'relatedTours', 'faqs'));
+        return view('frontend.tours.show', compact('tour', 'relatedTours'));
     }
 }

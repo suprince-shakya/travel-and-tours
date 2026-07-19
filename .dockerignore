@@ -1,0 +1,17 @@
+.git
+.gitignore
+.env
+.env.docker
+docker-compose.yml
+node_modules/
+npm-debug.log
+vendor/
+storage/framework/cache/data/*
+storage/framework/sessions/*
+storage/framework/views/*
+storage/logs/*
+.idea/
+.vscode/
+*.md
+.DS_Store
+Thumbs.db
