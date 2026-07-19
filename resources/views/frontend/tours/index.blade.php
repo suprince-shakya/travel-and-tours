@@ -8,7 +8,7 @@
 @push('styles')
 <style>
 .tours-hero {
-    min-height: 45vh;
+    min-height: 25vh;
     display: flex;
     align-items: center;
     position: relative;
@@ -56,31 +56,34 @@
                         <i class="bi bi-compass me-1"></i>{{ $tours->total() ?? 0 }} tours available
                     </span>
                 </div>
-                <h1 class="text-white fw-bold mb-3">Discover Your<br>Next Adventure</h1>
-                <p class="text-white-50 mb-4">Handpicked journeys across the globe — from ancient trails to pristine shores, find the trip that speaks to your soul.</p>
-                <div class="position-relative" style="max-width: 500px;">
+                <h1 class="text-white fw-bold mb-0">Discover Your<br>Next Adventure</h1>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="py-4" style="background: #f8f9fa;">
+    <div class="container">
+        <div class="row g-3 align-items-center">
+            <div class="col-lg-5">
+                <div class="position-relative">
                     <input type="text" id="heroKeyword" class="form-control form-control-lg rounded-pill border-0 ps-4 pe-5"
                            placeholder="Search tours..." value="{{ request('keyword') }}"
-                           style="background: rgba(255,255,255,0.1); backdrop-filter: blur(12px); color: #fff; box-shadow: 0 4px 20px rgba(0,0,0,0.2);">
-                    <i class="bi bi-search position-absolute top-50 end-0 me-3 translate-middle-y" style="color: rgba(255,255,255,0.5); font-size: 1.1rem; pointer-events: none;"></i>
-                    <style>
-                    #heroKeyword::placeholder { color: rgba(255,255,255,0.4); }
-                    #heroKeyword:focus { background: rgba(255,255,255,0.18); color: #fff; box-shadow: 0 4px 30px rgba(0,0,0,0.3); }
-                    </style>
+                           style="background: #fff; box-shadow: 0 2px 12px rgba(0,0,0,0.06);">
+                    <i class="bi bi-search position-absolute top-50 end-0 me-3 translate-middle-y" style="color: #adb5bd; font-size: 1.1rem; pointer-events: none;"></i>
                 </div>
-                @if($categories->count() > 0)
-                <div class="d-flex flex-wrap gap-2 mt-3">
-                    @foreach($categories->take(6) as $cat)
-                    <a href="{{ route('tours.index', ['category[]' => $cat->slug]) }}"
-                       class="badge text-decoration-none px-3 py-2 rounded-pill"
-                       style="background: rgba(255,255,255,0.06); color: rgba(255,255,255,0.7); border: 1px solid rgba(255,255,255,0.08); font-weight: 500; font-size: 0.78rem; transition: all 0.2s;"
-                       onmouseover="this.style.background='rgba(255,255,255,0.15)'; this.style.color='#fff'"
-                       onmouseout="this.style.background='rgba(255,255,255,0.06)'; this.style.color='rgba(255,255,255,0.7)'">
-                        <i class="bi bi-tag me-1"></i>{{ $cat->name }}
-                    </a>
+            </div>
+            <div class="col-lg-7">
+                <div class="d-flex flex-wrap align-items-center gap-2">
+                    <small style="color: #888; font-size: 0.78rem; font-weight: 500;">Popular:</small>
+                    @php $trending = ['Adventure', 'Beach', 'Cultural', 'Hiking', 'Family', 'Romantic', 'Safari', 'Sailing', 'Trekking', 'Wildlife']; @endphp
+                    @foreach($trending as $term)
+                    <span class="trending-chip" onclick="document.getElementById('heroKeyword').value='{{ $term }}'; filterTours();"
+                          style="cursor: pointer; display: inline-block; padding: 4px 12px; border-radius: 20px; font-size: 0.78rem; font-weight: 500; color: #666; background: #fff; border: 1px solid #e0e0e0; transition: all 0.2s;"
+                          onmouseover="this.style.background='var(--primary-color)'; this.style.color='#fff'; this.style.borderColor='var(--primary-color)'"
+                          onmouseout="this.style.background='#fff'; this.style.color='#666'; this.style.borderColor='#e0e0e0'">{{ $term }}</span>
                     @endforeach
                 </div>
-                @endif
             </div>
         </div>
     </div>

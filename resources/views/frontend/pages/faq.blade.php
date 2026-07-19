@@ -6,13 +6,13 @@
 @section('content')
 
 <section class="faq-hero">
-    <div class="container text-center text-white">
-        <h1 class="fw-bold display-5 mb-3">Frequently Asked Questions</h1>
-        <p class="lead mb-4 text-white-50">Everything you need to know about booking and traveling with us</p>
-        <form class="faq-search mx-auto d-flex" id="faqSearchForm">
-            <input type="text" id="faqSearch" placeholder="Search FAQs..." autocomplete="off">
-            <button type="submit" class="btn"><i class="bi bi-search me-1"></i>Search</button>
-        </form>
+    <div class="container text-white">
+        <div class="row">
+            <div class="col-lg-8">
+                <h1 class="fw-bold mb-2" style="font-size: clamp(1.5rem, 3vw, 2.2rem); letter-spacing: -0.5px; color: #fff;">Frequently Asked Questions</h1>
+                <p class="mb-0" style="color: rgba(255,255,255,0.65); font-size: 0.95rem;">Everything you need to know about booking and traveling with us</p>
+            </div>
+        </div>
     </div>
 </section>
 
@@ -97,10 +97,8 @@ document.addEventListener('DOMContentLoaded', function () {
             categoryTabs.forEach(t => t.classList.remove('active'));
             this.classList.add('active');
             const cat = this.dataset.category;
-            document.querySelectorAll('[data-category]').forEach(el => {
-                if (el.id === 'categoryTabs') return;
-                if (cat === 'all') { el.style.display = 'block'; }
-                else { el.style.display = el.dataset.category === cat ? 'block' : 'none'; }
+            document.querySelectorAll('.mb-5[data-category]').forEach(el => {
+                el.style.display = cat === 'all' || el.dataset.category === cat ? 'block' : 'none';
             });
             searchInput.value = '';
             document.querySelectorAll('.faq-item').forEach(el => el.style.display = 'block');

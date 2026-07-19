@@ -6,26 +6,21 @@
 
 @section('content')
 <section class="about-hero">
+    <div class="about-hero-particle"></div>
+    <div class="about-hero-particle"></div>
+    <div class="about-hero-particle"></div>
+    <div class="about-hero-particle"></div>
     <div class="container">
-        <div class="row justify-content-center text-center">
+        <div class="row">
             <div class="col-lg-8">
-                <h1 class="display-4 fw-bold text-white mb-3">Our Story</h1>
-                <p class="lead text-white-50 mb-4">We believe travel is not just about reaching a destination — it's about the journey, the people you meet, and the memories you create along the way.</p>
-                <div class="d-flex justify-content-center gap-3">
-                    <a href="{{ route('tours.index') }}" class="btn btn-light rounded-pill px-4 py-2 fw-semibold">Explore Tours</a>
-                    <a href="{{ route('contact') }}" class="btn btn-outline-light rounded-pill px-4 py-2">Contact Us</a>
+                <div class="mb-2">
+                    <span class="badge" style="background: rgba(255,255,255,0.1); backdrop-filter: blur(8px); color: #fff; border: 1px solid rgba(255,255,255,0.08); padding: 4px 14px; border-radius: 20px; font-weight: 500; font-size: 0.7rem; letter-spacing: 0.5px;">
+                        <i class="bi bi-info-circle me-1"></i>About Us
+                    </span>
                 </div>
+                <h1 class="display-5 fw-bold text-white mb-2" style="letter-spacing: -1px;">Our Story</h1>
+                <p class="lead mb-0" style="color: rgba(255,255,255,0.65); max-width: 600px; font-size: 1rem;">We believe travel is not just about reaching a destination — it's about the journey, the people you meet, and the memories you create along the way.</p>
             </div>
-        </div>
-        <div class="row g-4 mt-5" id="statsRow">
-            @foreach($stats as $stat)
-            <div class="col-6 col-md-3">
-                <div class="stat-card">
-                    <div class="stat-number stat-counter" data-target="{{ $stat['number'] }}">0</div>
-                    <div class="stat-label">{{ $stat['label'] }}</div>
-                </div>
-            </div>
-            @endforeach
         </div>
     </div>
 </section>

@@ -10,11 +10,11 @@
 @section('content')
 <section class="contact-hero">
     <div class="container">
-        <div class="row justify-content-center text-center">
+        <div class="row">
             <div class="col-lg-8">
-                <span class="badge bg-light text-dark rounded-pill px-3 py-2 mb-3">Get in Touch</span>
-                <h1 class="display-4 fw-bold text-white mb-3">We'd Love to Hear From You</h1>
-                <p class="lead text-white-50 mb-0">Have a question about a tour, need help planning your trip, or just want to say hello? Our team is here for you.</p>
+                <span class="badge bg-light text-dark rounded-pill px-3 py-1 mb-2" style="font-size: 0.7rem; font-weight: 500;">Get in Touch</span>
+                <h1 class="fw-bold text-white mb-2" style="font-size: clamp(1.5rem, 3vw, 2.2rem); letter-spacing: -0.5px;">We'd Love to Hear From You</h1>
+                <p class="mb-0" style="color: rgba(255,255,255,0.65); font-size: 0.95rem; max-width: 560px;">Have a question about a tour, need help planning your trip, or just want to say hello? Our team is here for you.</p>
             </div>
         </div>
     </div>
