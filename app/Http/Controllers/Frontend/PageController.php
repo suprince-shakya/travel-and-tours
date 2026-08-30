@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Booking;
 use App\Models\Faq;
 use App\Models\Page;
 use App\Models\Testimonial;
@@ -16,7 +17,7 @@ class PageController extends Controller
         if ($slug === 'about') {
             $stats = [
                 ['number' => Tour::where('status', true)->count(), 'label' => 'Amazing Tours'],
-                ['number' => number_format(Tour::sum('bookings_count') ?: 15000), 'label' => 'Happy Travelers'],
+                ['number' => number_format(Booking::count() ?: 15000), 'label' => 'Happy Travelers'],
                 ['number' => '100+', 'label' => 'Expert Guides'],
                 ['number' => date('Y') - 2010, 'label' => 'Years Experience'],
             ];
