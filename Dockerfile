@@ -20,7 +20,7 @@ RUN mkdir -p storage/app/public storage/framework/{sessions,views,cache/data} st
 
 FROM node:20 AS node-build
 WORKDIR /app
-COPY package.json package-lock.json vite.config.js postcss.config.js tailwind.config.js ./
+COPY package.json package-lock.json vite.config.js  ./
 RUN npm ci
 COPY resources/ resources/
 RUN npm run build
