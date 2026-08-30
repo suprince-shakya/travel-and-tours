@@ -42,7 +42,7 @@ return new class extends Migration
             $table->string('languages')->nullable();
             $table->text('cancellation_policy')->nullable();
             $table->text('terms')->nullable();
-            $table->foreignId('guide_id')->nullable()->constrained('guides')->cascadeOnDelete();
+            $table->unsignedBigInteger('guide_id')->nullable();
             $table->integer('max_group_size');
             $table->integer('remaining_seats');
             $table->date('available_from')->nullable();

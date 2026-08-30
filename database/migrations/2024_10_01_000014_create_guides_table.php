@@ -30,6 +30,10 @@ return new class extends Migration
             $table->index('status');
             $table->index('rating');
         });
+
+        Schema::table('tours', function (Blueprint $table) {
+            $table->foreign('guide_id')->references('id')->on('guides')->cascadeOnDelete();
+        });
     }
 
     public function down(): void
