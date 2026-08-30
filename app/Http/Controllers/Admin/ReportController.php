@@ -30,7 +30,7 @@ class ReportController extends Controller
 
         $selectRaw = match ($groupBy) {
             'day' => DB::raw("DATE(created_at) as period"),
-            default => DB::raw("strftime('%Y-%m', created_at) as period"),
+            default => DB::raw("DATE_FORMAT(created_at, '%Y-%m') as period"),
         };
 
         $revenueData = (clone $query)
@@ -76,7 +76,7 @@ class ReportController extends Controller
             ->get();
 
         $bookingsByMonth = (clone $query)
-            ->select(DB::raw("strftime('%Y-%m', created_at) as month"), DB::raw('COUNT(*) as total'))
+            ->select(DB::raw("DATE_FORMAT(created_at, '%Y-%m') as month"), DB::raw('COUNT(*) as total'))
             ->groupBy('month')
             ->orderBy('month')
             ->get();
@@ -109,7 +109,7 @@ class ReportController extends Controller
         $activeCustomers = (clone $query)->where('status', true)->count();
 
         $customersByMonth = (clone $query)
-            ->select(DB::raw("strftime('%Y-%m', created_at) as month"), DB::raw('COUNT(*) as total'))
+            ->select(DB::raw("DATE_FORMAT(created_at, '%Y-%m') as month"), DB::raw('COUNT(*) as total'))
             ->groupBy('month')
             ->orderBy('month')
             ->get();
@@ -200,7 +200,7 @@ class ReportController extends Controller
         }
 
         $data = $query->select(
-            DB::raw("strftime('%Y-%m', created_at) as period"),
+            DB::raw("DATE_FORMAT(created_at, '%Y-%m') as period"),
             DB::raw('COUNT(*) as count'),
             DB::raw('SUM(amount) as total')
         )

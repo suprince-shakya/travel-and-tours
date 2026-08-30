@@ -38,7 +38,7 @@ class DashboardController extends Controller
         $monthlyRevenue = Payment::where('status', 'completed')
             ->where('created_at', '>=', Carbon::now()->subYear())
             ->select(
-                DB::raw("strftime('%Y-%m', created_at) as month"),
+                DB::raw("DATE_FORMAT(created_at, '%Y-%m') as month"),
                 DB::raw('SUM(amount) as total')
             )
             ->groupBy('month')
